@@ -1,7 +1,9 @@
 package imperative;
-
+// Documentation for Java util:
+// https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/package-summary.html
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import static imperative.Main.Gender.FEMALE;
@@ -33,8 +35,11 @@ public class Main {
         }
 
         out.println("\n// Declarative approach");
+
+        Predicate<Person> personPredicate = person -> FEMALE.equals(person.gender);
+
         List<Person> females2 = people.stream()
-                .filter(person -> FEMALE.equals(person.gender))
+                .filter(personPredicate)
                 .toList();
 //                .collect(Collectors.toList());
 //                .forEach(out::println);
