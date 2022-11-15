@@ -5,6 +5,7 @@ import java.util.List;
 // https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/stream/package-summary.html
 import java.util.function.Function;
 import java.util.function.IntConsumer;
+import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
 import java.util.stream.Collectors;
 
@@ -39,15 +40,28 @@ public class _Stream {
 
         // Extracting lambdas and reference methods to Functions from util to wrap the knowledge obtained so far
 
-        IntConsumer println = out::println;
-        ToIntFunction<String> length = String::length;
-        Function<Person, String> personStringFunction = person -> person.name;
+//        IntConsumer println = out::println;
+//        ToIntFunction<String> length = String::length;
+//        Function<Person, String> personStringFunction = person -> person.name;
+//
+//        people.stream()
+//                .map(personStringFunction)
+//                .mapToInt(length)
+//                .forEach(println);
 
-        people.stream()
-                .map(personStringFunction)
-                .mapToInt(length)
-                .forEach(println);
 
+//        Predicate<Person> personPredicate = person -> FEMALE.equals(person.gender);
+//        boolean containsOnlyFemales = people.stream()
+//                .allMatch(personPredicate);
+//
+//        Predicate<Person> personPredicate = person -> FEMALE.equals(person.gender);
+//        boolean containsAnyFemales = people.stream()
+//                .anyMatch(personPredicate);
+
+        Predicate<Person> personPredicate = person -> NON_BINARY.equals(person.gender);
+        boolean doesNotContainsNonBinary = people.stream()
+                .noneMatch(personPredicate);
+        out.println(doesNotContainsNonBinary);
     }
 
     static class Person {
