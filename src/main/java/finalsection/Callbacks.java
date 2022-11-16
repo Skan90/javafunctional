@@ -4,7 +4,7 @@ import java.util.function.Consumer;
 
 import static java.lang.System.*;
 
-public class Main {
+public class Callbacks {
     public static void main(String[] args) {
 
         hello("Rafael", null, value -> {
